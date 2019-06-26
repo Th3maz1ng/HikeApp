@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+	<ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-router-outlet></ion-router-outlet>
+
+<ion-content>
+	<header>
+		<table>
+			<tr>
+				<td>
+					<h3 style="color:white;">{{ hike.name | uppercase }}</h3>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</table>
+	</header>
+	<table class="detail-table">
+		<tr>
+			<td>
+				<div class="map-style" #hikeMap></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+		</tr>
+		<tr style="text-align:center;padding:0;">
+			<h2>STEPS</h2>
+			<ion-list>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 1</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 2</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			   </ion-item>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 3</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+			  <table>
+					<tr>
+						<td>Step 4</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+			  <table>
+					<tr>
+						<td>Step 5</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			</ion-list>
+		</tr>
+	</table>
+</ion-content>

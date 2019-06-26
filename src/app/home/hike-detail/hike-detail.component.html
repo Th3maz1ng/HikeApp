@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+	<ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-router-outlet></ion-router-outlet>
+
+<ion-content>
+	<table class="detail-table">
+		<tr>
+			<td><ion-img class="item-img" src="{{hike.img}}"></ion-img></td>
+		</tr>
+		<tr>
+			<td>
+				<table class="sub-table">
+					<tr><td style="text-align:center;" class="line-spacing"><h2>{{hike.name | uppercase}}</h2></td></tr>
+					<tr><td style="text-align:center;"><span *ngFor="let item of hikeService.htmlMarkGenerator(hike.mark)"><ion-icon style="font-size:20px;" *ngIf="item == 0" name="star-outline" ></ion-icon><ion-icon style="font-size:20px;" *ngIf="item == 1" name="star" ></ion-icon></span></td></tr>
+					<tr><td class="line-spacing"><ion-icon style="font-size:30px;vertical-align: text-top;" name="pin"></ion-icon><span style="margin-left:50px;">{{hike.location}}</span></td></tr>
+					<tr><td><ion-icon style="font-size:30px;vertical-align: text-top;" name="alarm"></ion-icon><span style="margin-left:50px;">~{{second2time.transform(hike.duration)}}</span></td></tr>
+					<tr><td class="line-spacing"><ion-icon style="font-size:30px;vertical-align: text-top;" name="trending-up"></ion-icon><span style="margin-left:50px;">~{{hike.stepping}}m</span></td></tr>
+					<tr><td>{{ hike.description }}</td></tr>
+					<tr><td style="text-align:center;" class="line-spacing"><ion-button routerLink="/start/{{hike.id}}" color="success" fill="outline">Start</ion-button></td></tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="map-style" #hikeMap></div>
+			</td>
+		</tr>
+		<tr style="text-align:center;padding:0;">
+			<h2>STEPS</h2>
+			<ion-list>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 1</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 2</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			   </ion-item>
+			  <ion-item>
+				<table>
+					<tr>
+						<td>Step 3</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+			  <table>
+					<tr>
+						<td>Step 4</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			  <ion-item>
+			  <table>
+					<tr>
+						<td>Step 5</td>
+					</tr>
+					<tr>
+						<td>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque;
+						</td>
+					</tr>
+				</table>
+			  </ion-item>
+			</ion-list>
+		</tr>
+	</table>
+</ion-content>

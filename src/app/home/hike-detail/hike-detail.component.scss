@@ -1,0 +1,52 @@
+.detail-table
+{
+	margin : 20px auto 20px auto;
+	width:70%;
+}
+
+.detail-table tr
+{
+	/*box-shadow: 0 0 15px grey;*/
+}
+
+.sub-table
+{
+	margin:auto;
+}
+
+.item-img
+{
+	margin:auto;
+}
+
+.line-spacing
+{
+	padding:10px 0 10px 0;
+}
+
+ion-list
+{
+	margin:0;
+	height:300px;
+	overflow: scroll;
+}
+
+ion-item table tr td
+{
+	padding-top:10px;
+}
+
+ion-item table tr:nth-child(1) td
+{
+	font-size: 1.5em;
+}
+
+ion-item:nth-child(odd) table
+{
+	background-color:rgb(225,225,225);
+}
+
+.map-style
+{
+	height:35vh;
+}
