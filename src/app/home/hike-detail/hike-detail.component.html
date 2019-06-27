@@ -25,7 +25,7 @@
 					<tr><td><ion-icon style="font-size:30px;vertical-align: text-top;" name="alarm"></ion-icon><span style="margin-left:50px;">~{{second2time.transform(hike.duration)}}</span></td></tr>
 					<tr><td class="line-spacing"><ion-icon style="font-size:30px;vertical-align: text-top;" name="trending-up"></ion-icon><span style="margin-left:50px;">~{{hike.stepping}}m</span></td></tr>
 					<tr><td>{{ hike.description }}</td></tr>
-					<tr><td style="text-align:center;" class="line-spacing"><ion-button routerLink="/start/{{hike.id}}" color="success" fill="outline">Start</ion-button></td></tr>
+					<tr><td style="text-align:center;" class="line-spacing"><ion-button color="success" fill="outline" routerLink="/start/{{hike.id}}">Start</ion-button></td></tr>
 				</table>
 			</td>
 		</tr>
