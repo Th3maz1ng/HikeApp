@@ -2,10 +2,11 @@ export class Hike
 {
 	id:number;
 	name:string;
-	location:string;
-	description:string;
+	city:string;
+	descr:string;
 	duration:number;
-	stepping:number;
+	length:number;
 	mark:number;
 	img:string;
+	steps:Array<string>;
 }

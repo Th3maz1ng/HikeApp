@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HikeDetailComponent } from './home/hike-detail/hike-detail.component';
 import { HikeStartComponent } from './home/hike-start/hike-start.component';
@@ -15,7 +16,7 @@ import { HikeStartComponent } from './home/hike-start/hike-start.component';
 @NgModule({
   declarations: [AppComponent, HikeDetailComponent,HikeStartComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

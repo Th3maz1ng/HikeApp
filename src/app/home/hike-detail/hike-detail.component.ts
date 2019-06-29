@@ -29,21 +29,36 @@ export class HikeDetailComponent implements OnInit {
   @ViewChild('hikeMap') hikeMap;
 
   hikeAppConst;
-  
+  gpx;
   constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time:Second2TimePipe) { 
   }
   
   ngOnInit() {
-    this.getHike();    
+    this.getHikeAPI();
+    this.getHikeGPX();
   }
   
   //Appel de la methode getHike du Service avec pour parametre l'identifiant de la rando passée en Url.
-  getHike(): void
-  {
+  getHikeAPI() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.hikeService.getHike(id)
-    .subscribe(obj => this.hike = obj);
-  }
+    this.hikeService.getHikeApi(id)
+      .subscribe((data) => this.hike = {
+        id: data['id'],
+        name: data['name'],
+        duration: data['duration'],
+        city: data['city'],
+        descr: data['descr'],
+        mark: 4,
+        img: "http://www.tourisme-hautevienne.com/sites/default/files/randonne%CC%81e-marcheur-chemin-creux.jpg",
+        length: data['length'],
+        steps: data['steps'],
+      },
+      );
+    }
+    getHikeGPX(){
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      this.hikeService.getHikeGPX(id).subscribe((gpx) => this.gpx =gpx);
+    }
 
   //Initialisation de la map Leaflet lors du chargement du rendu.
   ionViewWillEnter() {
@@ -89,19 +104,6 @@ export class HikeDetailComponent implements OnInit {
     }).on('loaded', e => {
       this.hikeAppConst.fitBounds(e.target.getBounds());
     }).addTo(this.hikeAppConst);
-
-
-    this.hikeAppConst.locate({setView: true, maxZoom: 16})
-    .on('locationfound',(e : L.LocationEvent )=>{
-      console.log(e)
-      var radius = e.accuracy;
-      L.marker(e.latlng,{icon:L.icon({iconUrl:'assets/pin-icon-pos.png'})}).addTo(this.hikeAppConst)
-      .bindPopup("You are within " + radius + " meters from this point").openPopup();
-    })
-    .on('locationerror', (e : L.LocationEvent )=>{
-      console.log(e);
-      alert("Location access denied.");
-    });
   }
 }
 

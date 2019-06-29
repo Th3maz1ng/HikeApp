@@ -10,13 +10,13 @@
 	<h2 class="header">Hikings :</h2>
 	<table *ngFor="let hike of hikes" class="item">
 		<tr>
-			<td colspan="2"><ion-img class="item-img" src="{{hike.img}}"></ion-img></td>
+			<td colspan="2"><ion-img class="item-img" src="http://www.tourisme-hautevienne.com/sites/default/files/randonne%CC%81e-marcheur-chemin-creux.jpg"></ion-img></td>
 		</tr>
 		<tr>
 			<td style="width:70%;" colspan="2" ><h3>{{hike.name}}</h3></td>
 		</tr>
 		<tr>
-			<td colspan="2" class="line-spacing">{{hike.location}}</td>
+			<td colspan="2" class="line-spacing">{{hike.city}}</td>
 		</tr>
 		<tr>
 			
@@ -25,10 +25,10 @@
 		<tr>
 			
 			<td>~{{hike.duration | second2time}}</td>
-			<td>{{hike.stepping}} m</td>
+			<td>{{hike.length}} m</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="line-spacing"><span *ngFor="let item of hikeService.htmlMarkGenerator(hike.mark)"><ion-icon *ngIf="item == 0" name="star-outline" ></ion-icon><ion-icon *ngIf="item == 1" name="star" ></ion-icon></span></td>
+			<td colspan="2" class="line-spacing"><span *ngFor="let item of hikeService.htmlMarkGenerator(4)"><ion-icon *ngIf="item == 0" name="star-outline" ></ion-icon><ion-icon *ngIf="item == 1" name="star" ></ion-icon></span></td>
 		</tr>
 		<tr>
 			<td><ion-button routerLink="/start/{{hike.id}}" shape="round" fill="outline">Let's hike</ion-button></td>
