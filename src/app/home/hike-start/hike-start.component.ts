@@ -154,7 +154,7 @@ export class HikeStartComponent implements OnInit {
       })
     .on('locationerror', (e : L.LocationEvent )=>{
       console.log(e);
-      alert("Location access denied.");
+      //alert("Location access denied.");
     });
   }
   

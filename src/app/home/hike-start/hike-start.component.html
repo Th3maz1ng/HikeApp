@@ -19,7 +19,7 @@
 					<h3 style="color:white;">{{ hike.name | uppercase }}</h3>
 				</td>
 				<td>
-					<my-stopwatch></my-stopwatch>
+					<my-stopwatch [hikeid]="hike.id"></my-stopwatch>
 				</td>
 			</tr>
 		</table>
@@ -36,24 +36,31 @@
 			</td>
 		</tr>
 		<tr style="text-align:center;padding:0;">
-			<h2>STEPS</h2>
-			<ion-list>
-				
-			  <ion-item *ngFor="let step of hike.steps">
-				<table>
-					<tr>
-						<td>Step
-							<b *ngIf="step == currentStepText">EN COURS</b> 
-						</td>
-					</tr>
-					<tr>
-						<td>
-							{{step}} {{currentStepText}}
-						</td>
-					</tr>
-				</table>
-			  </ion-item>
-			</ion-list>
+			<td>
+				<h2>STEPS</h2>
+				<ion-list>
+					
+				<ion-item *ngFor="let step of hike.steps">
+					<table>
+						<tr>
+							<td>Step
+								<b *ngIf="step == currentStepText">EN COURS</b> 
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{{step}} {{currentStepText}}
+							</td>
+						</tr>
+					</table>
+				</ion-item>
+				</ion-list>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">
+				<ion-button color="primary" fill="outline" routerLink="/">Finish</ion-button>
+			</td>
 		</tr>
 	</table>
 </ion-content>

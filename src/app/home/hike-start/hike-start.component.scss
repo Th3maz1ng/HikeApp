@@ -28,3 +28,26 @@ header table tr td
 {
 	width:50%;
 }
+
+ion-list
+{
+	margin:0;
+	height:300px;
+	overflow: scroll;
+}
+
+ion-item table tr td
+{
+	padding-top:10px;
+}
+
+ion-item table tr:nth-child(1) td
+{
+	font-size: 1.5em;
+}
+
+ion-item:nth-child(odd) table
+{
+	background-color:rgb(225,225,225);
+	width:100%;
+}

@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { Hike } from './hike';
 import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,29 +14,23 @@ export class HikeService {
 	getHikes(): Observable<Hike[]> {
 		var configUrl = 'https://hikes.skyforge.khazad-dum.tech/';
 		var data =this.http.get(configUrl);
-		return this.http.get<Hike[]>(configUrl);
+	return this.http.get<Hike[]>(configUrl);
 	}
-	
-  getHikes(): Observable<Hike[]> {
-	var configUrl = 'https://hikes.skyforge.khazad-dum.tech/';
-	var data =this.http.get(configUrl);
-  return this.http.get<Hike[]>(configUrl);
-  }
-  getHikeGeoJson(id:Number){
-	var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id+"/trace";
-	const options:object ={responseType:'text'};	 
-	console.log(JSON.stringify((this.http.get<string>(configUrl,options))));      
-  }
+	getHikeGeoJson(id:Number){
+		var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id+"/trace";
+		const options:object ={responseType:'text'};	 
+		console.log(JSON.stringify((this.http.get<string>(configUrl,options))));      
+	}
 
-getHikeApi(id:Number) {
-	var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id;
-  return this.http.get<Hike>(configUrl);
-}
-getHikeGPX(id:Number){
-	var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id+"/trace";
-	const options:object ={responseType:'text'};
-	return this.http.get<string>(configUrl,options);
-}
+	getHikeApi(id:Number) {
+		var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id;
+	return this.http.get<Hike>(configUrl);
+	}
+	getHikeGPX(id:Number){
+		var configUrl = 'https://hikes.skyforge.khazad-dum.tech/'+id+"/trace";
+		const options:object ={responseType:'text'};
+		return this.http.get<string>(configUrl,options);
+	}
   
 	htmlMarkGenerator(mark:number)
 	{

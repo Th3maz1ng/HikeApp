@@ -1,1 +1,6 @@
-<h3><span>&#9724;  &#10074;&#10074; </span><button type="button">&#9658;</button>00:00:00</h3>
+<h3>
+	<button [hidden]="stylePlay" (click)="runStopwatch()" type="button">&#9658;</button>
+	<button [hidden]="stylePause" (click)="pauseStopwatch()" type="button">&#10074;&#10074;</button>
+	<button [hidden]="styleStop" (click)="resetStopwatch()" type="button">&#9724;</button>
+	{{ second2time.transform(getElapsedSeconds()) }}
+</h3>
