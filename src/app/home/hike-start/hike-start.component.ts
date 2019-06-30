@@ -94,7 +94,7 @@ export class HikeStartComponent implements OnInit, AfterViewInit {
 
       },
     };
-
+    // On crée le tracé depuis le Gpx
     const gpxObj = new L.GPX(this.gpx, {
       async: true,
       marker_options: paramsGPX,
@@ -105,6 +105,8 @@ export class HikeStartComponent implements OnInit, AfterViewInit {
         lineCap: 'round'
       }
     }).on('loaded', e => {
+// Une fois chargé on récupère les points et leur zone
+
       this.hikeAppConst.fitBounds(e.target.getBounds());
       this.steps = new Array<L.Circle>();
       console.log(32);
@@ -122,6 +124,7 @@ export class HikeStartComponent implements OnInit, AfterViewInit {
                 opacity: 0,
                 weight: this.steps.length,
               });
+              //on affecte
               this.steps.push(cercle);
               this.steps.forEach(element => {
                 element.addTo(this.hikeAppConst);
@@ -134,7 +137,7 @@ export class HikeStartComponent implements OnInit, AfterViewInit {
       });
 
     }).addTo(this.hikeAppConst);
-
+    // on localise le client
     this.hikeAppConst.locate({setView: false, watch: true, maxZoom: 16})
     .on('locationfound',(e: L.LocationEvent )=> {
       const radius = e.accuracy;
