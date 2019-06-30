@@ -16,9 +16,12 @@ Elle propose les fonctionalités suivantes :
     - possibilité de lancer plusieurs randps en parallèle.
     - Suivi GPS en temps réel
     - Affichage des étapes en cours au fur et à mesure du déplacement
+    
+Application android fonctionnelle.
 
 
 Les points "difficiles"
-  L'intégration de Leaflet (gestion du cycle de vie), ainsi que du module leaflet-gpx pour la map nous a posé quelques soucis 
+  - L'intégration de Leaflet (gestion du cycle de vie), ainsi que du module leaflet-gpx pour la map nous a posé quelques soucis 
   réglés par la suite.
+  
   
