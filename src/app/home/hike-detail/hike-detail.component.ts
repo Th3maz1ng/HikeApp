@@ -92,7 +92,7 @@ export class HikeDetailComponent implements OnInit {
       },
     }
     
-    new L.GPX("assets/banne.gpx", {
+    new L.GPX(this.gpx , {
       async: true,
       marker_options : paramsGPX,
       polyline_options: {
