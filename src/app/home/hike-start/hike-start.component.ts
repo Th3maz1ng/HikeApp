@@ -164,4 +164,9 @@ export class HikeStartComponent implements OnInit, AfterViewInit {
 	this.stopWatch.startIfNotStarted();
   }
   
+  public stopStopWatch() : void
+  {
+	 this.stopWatch.resetStopwatch();
+  }
+  
 }

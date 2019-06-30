@@ -134,7 +134,7 @@ export class StopWatchComponent implements OnInit {
 		
 	}
 	
-	private resetStopwatch() : void
+	public resetStopwatch() : void
 	{
 		console.log("timer stopped");
 		clearInterval(this.intervalRef);
