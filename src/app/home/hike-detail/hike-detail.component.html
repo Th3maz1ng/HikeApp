@@ -38,10 +38,10 @@
 			<td>
 				<h2>STEPS</h2>
 				<ion-list>
-						<ion-item *ngFor="let step of hike.steps">
+						<ion-item *ngFor="let step of hike.steps;  let i = index">
 								<table>
 									<tr>
-										<td>Step </td>
+										<td>Step {{ i+1 }} </td>
 									</tr>
 									<tr>
 										<td>

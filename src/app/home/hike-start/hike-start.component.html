@@ -19,7 +19,7 @@
 					<h3 style="color:white;">{{ hike.name | uppercase }}</h3>
 				</td>
 				<td>
-					<my-stopwatch [hikeid]="hike.id"></my-stopwatch>
+					<my-stopwatch #stopWatch [hikeid]="hike.id"></my-stopwatch>
 				</td>
 			</tr>
 		</table>
@@ -40,10 +40,10 @@
 				<h2>STEPS</h2>
 				<ion-list>
 					
-				<ion-item *ngFor="let step of hike.steps">
+				<ion-item *ngFor="let step of hike.steps; let i = index">
 					<table>
 						<tr>
-							<td>Step
+							<td>Step {{ i+1 }}
 								<b *ngIf="step == currentStepText">EN COURS</b> 
 							</td>
 						</tr>

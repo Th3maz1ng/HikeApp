@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -21,12 +21,13 @@ import { AngularDelegate } from '@ionic/angular';
 })
 
 
-export class HikeStartComponent implements OnInit {
+export class HikeStartComponent implements OnInit, AfterViewInit {
   title = 'Current Hike page';
 	
   @Input() hike: Hike;
   
   @ViewChild('hikeMap') hikeMap;
+  @ViewChild('stopWatch') stopWatch;
  
   hikeAppConst;
   gpx;
@@ -156,6 +157,11 @@ export class HikeStartComponent implements OnInit {
       console.log(e);
       //alert("Location access denied.");
     });
+  }
+  
+  ngAfterViewInit()
+  {
+	this.stopWatch.startIfNotStarted();
   }
   
 }

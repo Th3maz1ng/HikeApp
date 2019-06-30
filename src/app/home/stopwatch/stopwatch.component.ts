@@ -33,6 +33,7 @@ export class StopWatchComponent implements OnInit {
 		this.elapsedSeconds = 0;
 		this.intervalRef = null;
 		this.baseSeconds = 0;
+		this.startTimeStamp = 0;
 	}
 	
 	ngOnInit() {
@@ -148,6 +149,12 @@ export class StopWatchComponent implements OnInit {
 	private refreshStopwatch() : void
 	{
 		this.elapsedSeconds = Math.floor((Date.now() - this.startTimeStamp)/1000);
+	}
+	
+	public startIfNotStarted() : void
+	{
+		if(this.baseSeconds == 0 && this.startTimeStamp == 0)
+			this.runStopwatch();
 	}
 
 }
