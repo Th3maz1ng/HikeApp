@@ -28,14 +28,13 @@ export class HikeDetailComponent implements OnInit {
 
   hikeAppConst;
   gpx;
-  constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time: Second2TimePipe) { 
-  }
+  constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time: Second2TimePipe) {}
   ngOnInit() {
     this.getHikeAPI();
     this.getHikeGPX();
   }
 
-  //Appel de la methode getHike du Service avec pour parametre l'identifiant de la rando passée en Url.
+  // Appel de la methode getHike du Service avec pour parametre l'identifiant de la rando passée en Url.
   getHikeAPI() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.hikeService.getHikeApi(id)
@@ -52,20 +51,20 @@ export class HikeDetailComponent implements OnInit {
       },
       );
     }
-    getHikeGPX(){
+    // Retourne le gpx depuis l'api
+    getHikeGPX() {
       const id = Number(this.route.snapshot.paramMap.get('id'));
-      this.hikeService.getHikeGPX(id).subscribe((gpx) => this.gpx =gpx);
+      this.hikeService.getHikeGPX(id).subscribe( (gpx) => this.gpx = gpx );
     }
 
-  //Initialisation de la map Leaflet lors du chargement du rendu.
+  // Initialisation de la map Leaflet lors du chargement du rendu.
   ionViewWillEnter() {
 
-    //Map section
+    // Map section
     this.hikeAppConst = L.map(this.hikeMap.nativeElement)
     .setView([48.46, -4.22], 13);
     // dédinition des options de la map leaflet
-    let options =  
-    {
+    const options = {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
       id: 'mapbox.outdoors',
@@ -73,23 +72,20 @@ export class HikeDetailComponent implements OnInit {
       style: 'mapbox://styles/gwennrobin/cjwuexwo31avf1cnxzfwutiuf'
     };
     // définition et ajout du layer à la map
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',options).addTo(this.hikeAppConst);
-
-
-    let paramsGPX : IExtendGPX;
-    paramsGPX = 
-    {
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', options).addTo(this.hikeAppConst);
+    let paramsGPX: IExtendGPX;
+    paramsGPX = {
       startIconUrl: 'assets/pin-icon-start.png',
       endIconUrl: 'assets/pin-icon-end.png',
       shadowUrl: 'assets/pin-shadow.png',
       wptIconUrls : {
         '': 'assets/pin-icon-wpt.png',
       },
-    }
-    
+    };
+
     new L.GPX(this.gpx , {
       async: true,
-      marker_options : paramsGPX,
+      marker_options: paramsGPX,
       polyline_options: {
         color: 'red',
         opacity: 0.75,

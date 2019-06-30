@@ -1,6 +1,8 @@
 {
   "extends": "../tslint.json",
   "rules": {
+    "no-string-literal": false,
+    "no-trailing-whitespace": false,
     "directive-selector": [
       true,
       "attribute",
