@@ -17,27 +17,24 @@ import 'leaflet-gpx';
   providers : [Second2TimePipe],
   templateUrl: 'hike-detail.component.html',
   styleUrls: ['hike-detail.component.scss'],
-  
 })
-
 
 export class HikeDetailComponent implements OnInit {
   title = 'Hike details page';
-  
+
   @Input() hike: Hike;
-  
+
   @ViewChild('hikeMap') hikeMap;
 
   hikeAppConst;
   gpx;
-  constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time:Second2TimePipe) { 
+  constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time: Second2TimePipe) { 
   }
-  
   ngOnInit() {
     this.getHikeAPI();
     this.getHikeGPX();
   }
-  
+
   //Appel de la methode getHike du Service avec pour parametre l'identifiant de la rando passée en Url.
   getHikeAPI() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -49,7 +46,7 @@ export class HikeDetailComponent implements OnInit {
         city: data['city'],
         descr: data['descr'],
         mark: 4,
-        img: "http://www.tourisme-hautevienne.com/sites/default/files/randonne%CC%81e-marcheur-chemin-creux.jpg",
+        img: 'http://www.tourisme-hautevienne.com/sites/default/files/randonne%CC%81e-marcheur-chemin-creux.jpg',
         length: data['length'],
         steps: data['steps'],
       },
@@ -63,23 +60,21 @@ export class HikeDetailComponent implements OnInit {
   //Initialisation de la map Leaflet lors du chargement du rendu.
   ionViewWillEnter() {
 
-    console.log(this.route.snapshot.paramMap.get('id'));
-    
     //Map section
     this.hikeAppConst = L.map(this.hikeMap.nativeElement)
     .setView([48.46, -4.22], 13);
-    
+    // dédinition des options de la map leaflet
     let options =  
     {
-      attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      id:'mapbox.outdoors',
+      id: 'mapbox.outdoors',
       accessToken: 'pk.eyJ1IjoiZ3dlbm5yb2JpbiIsImEiOiJjandtOHA0NW4xYXpsNDVuNmk3Mm5zbWRhIn0.yE-MuvqyYf_v5eHjQQQ-nw',
-      style: "mapbox://styles/gwennrobin/cjwuexwo31avf1cnxzfwutiuf"
+      style: 'mapbox://styles/gwennrobin/cjwuexwo31avf1cnxzfwutiuf'
     };
-
+    // définition et ajout du layer à la map
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',options).addTo(this.hikeAppConst);
-   
+
 
     let paramsGPX : IExtendGPX;
     paramsGPX = 
@@ -91,8 +86,8 @@ export class HikeDetailComponent implements OnInit {
         '': 'assets/pin-icon-wpt.png',
       },
     }
-    
-    new L.GPX("assets/banne.gpx", {
+
+    new L.GPX('assets/banne.gpx', {
       async: true,
       marker_options : paramsGPX,
       polyline_options: {

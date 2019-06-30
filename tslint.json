@@ -3,9 +3,15 @@
   "rulesDirectory": [
     "codelyzer"
   ],
+
   "rules": {
     "array-type": false,
     "arrow-parens": false,
+    "indent": [
+      false,
+      "spaces",
+      4
+      ],
     "deprecation": {
       "severity": "warn"
     },

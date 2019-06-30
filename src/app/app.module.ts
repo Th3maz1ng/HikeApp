@@ -16,13 +16,13 @@ import { StopWatchComponent } from './home/stopwatch/stopwatch.component';
 import { CookieService } from './home/cookie.service';
 
 @NgModule({
-  declarations: [AppComponent, HikeDetailComponent,HikeStartComponent,StopWatchComponent],
+  declarations: [AppComponent, HikeDetailComponent, HikeStartComponent, StopWatchComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
-	CookieService,
+	  CookieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
