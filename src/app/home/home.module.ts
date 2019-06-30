@@ -19,7 +19,10 @@ import { Second2TimePipe } from './second2time.pipe';
   declarations: 
   [
   HomePage,
-  Second2TimePipe
-  ]
+	Second2TimePipe,
+  ],
+  exports: [
+	Second2TimePipe,
+  ],
 })
 export class HomePageModule {}

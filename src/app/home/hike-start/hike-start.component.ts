@@ -10,14 +10,14 @@ import { leafletPip } from '@mapbox/leaflet-pip';
 import * as L from 'leaflet';
 
 import 'leaflet';
-import 'leaflet-gpx';
-import '@mapbox/leaflet-pip';
+import '../leaflet-gpx';
+import { AngularDelegate } from '@ionic/angular';
+
 @Component({
   selector: 'app-hike-start',
   providers : [Second2TimePipe],
   templateUrl: 'hike-start.component.html',
-  styleUrls: ['hike-start.component.scss'],
-  
+  styleUrls: ['hike-start.component.scss'],  
 })
 
 
@@ -30,6 +30,9 @@ export class HikeStartComponent implements OnInit {
  
   hikeAppConst;
   gpx;
+  currentStep : L.Circle;
+  currentStepText: string;
+  steps: L.Circle[];
   constructor(private route: ActivatedRoute, private hikeService: HikeService, private second2time:Second2TimePipe) { 
   }
   
@@ -58,6 +61,8 @@ export class HikeStartComponent implements OnInit {
     getHikeGPX(){
       const id = Number(this.route.snapshot.paramMap.get('id'));
       this.hikeService.getHikeGPX(id).subscribe((gpx) => this.gpx =gpx);
+      this.hikeService.getHikeGeoJson(id);
+
     }
 
    //Initialisation de la map Leaflet lors du chargement du rendu.
@@ -87,11 +92,12 @@ export class HikeStartComponent implements OnInit {
       endIconUrl: 'assets/pin-icon-end.png',
       shadowUrl: 'assets/pin-shadow.png',
       wptIconUrls : {
-      
+      '': 'assets/pin-icon-wpt.png',
+
       },
     }
     
-    new L.GPX(this.gpx, {
+    var gpxObj = new L.GPX(this.gpx, {
       async: true,
       marker_options : paramsGPX,
       polyline_options: {
@@ -102,12 +108,48 @@ export class HikeStartComponent implements OnInit {
       }
     }).on('loaded', e => {
       this.hikeAppConst.fitBounds(e.target.getBounds());
+      this.steps = new Array<L.Circle>();
       console.log(32);
+      console.log(e.target._layers);
+        Object.keys(e.target._layers).forEach((key) => {
+          Object.keys(e.target._layers[key]._layers).forEach((key2) => {
+            if(e.target._layers[key]._layers[key2]["_popup"]){
+              console.log(e.target._layers[key]._layers[key2]["_latlng"])
+              var lat = e.target._layers[key]._layers[key2]["_latlng"]["lat"];
+              var lng = e.target._layers[key]._layers[key2]["_latlng"]["lng"];
+              var test = new L.LatLng(lat,lng)
+              var cercle = new L.Circle(test,{
+                radius:100,
+                color:"red",
+                opacity:0,
+                weight:this.steps.length,
+              });
+              this.steps.push(cercle)
+              this.steps.forEach(element => {
+                element.addTo(this.hikeAppConst);
+              });
+            }
+            else {
+              console.log("nope")
+            }
+          })
+          this.currentStep = this.steps[1];
+      });
+
     }).addTo(this.hikeAppConst);
 
     this.hikeAppConst.locate({setView: false, watch: true, maxZoom: 16})
     .on('locationfound',(e : L.LocationEvent )=>{
       var radius = e.accuracy;
+      if(e.latlng == this.currentStep.getLatLng() || e.latlng.lat-this.currentStep.getLatLng().lat <100 ||e.latlng.lng-this.currentStep.getLatLng().lng <100 ){
+        var i = 0;
+        console.log("test"),
+        console.log(this.currentStep);
+        this.currentStep = this.steps[this.currentStep.options.weight +1];
+        this.currentStepText = this.hike.steps[this.currentStep.options.weight +1];
+        console.log(this.currentStep);
+
+      }
       L.marker(e.latlng).addTo(this.hikeAppConst)
       })
     .on('locationerror', (e : L.LocationEvent )=>{
@@ -115,4 +157,5 @@ export class HikeStartComponent implements OnInit {
       alert("Location access denied.");
     });
   }
+  
 }

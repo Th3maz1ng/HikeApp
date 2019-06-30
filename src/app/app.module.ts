@@ -12,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HikeDetailComponent } from './home/hike-detail/hike-detail.component';
 import { HikeStartComponent } from './home/hike-start/hike-start.component';
+import { StopWatchComponent } from './home/stopwatch/stopwatch.component';
 
 @NgModule({
-  declarations: [AppComponent, HikeDetailComponent,HikeStartComponent],
+  declarations: [AppComponent, HikeDetailComponent,HikeStartComponent,StopWatchComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

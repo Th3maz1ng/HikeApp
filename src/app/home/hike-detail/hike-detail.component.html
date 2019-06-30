@@ -22,7 +22,7 @@
 					<tr><td style="text-align:center;" class="line-spacing"><h2>{{hike.name | uppercase}}</h2></td></tr>
 					<tr><td style="text-align:center;"><span *ngFor="let item of hikeService.htmlMarkGenerator(4)"><ion-icon style="font-size:20px;" *ngIf="item == 0" name="star-outline" ></ion-icon><ion-icon style="font-size:20px;" *ngIf="item == 1" name="star" ></ion-icon></span></td></tr>
 					<tr><td class="line-spacing"><ion-icon style="font-size:30px;vertical-align: text-top;" name="pin"></ion-icon><span style="margin-left:50px;">{{hike.city}}</span></td></tr>
-					<tr><td><ion-icon style="font-size:30px;vertical-align: text-top;" name="alarm"></ion-icon><span style="margin-left:50px;">~{{second2time.transform(hike.duration)}}</span></td></tr>
+					<tr><td><ion-icon style="font-size:30px;vertical-align: text-top;" name="alarm"></ion-icon><span style="margin-left:50px;">~{{ second2time.transform(hike.duration) }}</span></td></tr>
 					<tr><td class="line-spacing"><ion-icon style="font-size:30px;vertical-align: text-top;" name="trending-up"></ion-icon><span style="margin-left:50px;">~{{hike.length}}m</span></td></tr>
 					<tr><td>{{ hike.description }}</td></tr>
 					<tr><td style="text-align:center;" class="line-spacing"><ion-button color="success" fill="outline" routerLink="/start/{{hike.id}}">Start</ion-button></td></tr>
