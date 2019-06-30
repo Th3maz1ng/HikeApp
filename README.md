@@ -1,6 +1,6 @@
 # HikeApp
 
-Schramm-Henry Anatole
+Schramm-Henry Anatole 
 Robin Gwenn
 
 L'application présente l'ensemble des vues exigées. 
