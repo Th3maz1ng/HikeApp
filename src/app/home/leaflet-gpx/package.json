@@ -1,0 +1,53 @@
+{
+  "_args": [
+    [
+      "leaflet-gpx@1.0.0",
+      "D:\\Users\\Luzior\\Desktop\\Ionic\\HikeApp"
+    ]
+  ],
+  "_from": "leaflet-gpx@1.0.0",
+  "_id": "leaflet-gpx@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-65UwEwm3yTQ5Onll9McYoE7KNWE=",
+  "_location": "/leaflet-gpx",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "leaflet-gpx@1.0.0",
+    "name": "leaflet-gpx",
+    "escapedName": "leaflet-gpx",
+    "rawSpec": "1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/leaflet-gpx/-/leaflet-gpx-1.0.0.tgz",
+  "_spec": "1.0.0",
+  "_where": "D:\\Users\\Luzior\\Desktop\\Ionic\\HikeApp",
+  "author": {
+    "name": "Maxime Petazzoni"
+  },
+  "bugs": {
+    "url": "https://github.com/mpetazzoni/leaflet-gpx/issues"
+  },
+  "description": "npm for https://github.com/mpetazzoni/leaflet-gpx",
+  "homepage": "https://github.com/mpetazzoni/leaflet-gpx#readme",
+  "keywords": [
+    "leaflet",
+    "gpx"
+  ],
+  "license": "BSD-2-Clause",
+  "main": "gpx.js",
+  "name": "leaflet-gpx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpetazzoni/leaflet-gpx.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

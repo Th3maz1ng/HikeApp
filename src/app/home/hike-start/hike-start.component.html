@@ -41,11 +41,13 @@
 			  <ion-item *ngFor="let step of hike.steps">
 				<table>
 					<tr>
-						<td>Step </td>
+						<td>Step
+							<b *ngIf="step == currentStepText">EN COURS</b> 
+						</td>
 					</tr>
 					<tr>
 						<td>
-							{{step}}
+							{{step}} {{currentStepText}}
 						</td>
 					</tr>
 				</table>
